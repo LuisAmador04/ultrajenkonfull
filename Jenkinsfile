@@ -8,10 +8,14 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                sh 'pytest'
-            }
-        }
+    steps {
+        sh '''
+            . venv/bin/activate
+            pytest test_main.py
+        '''
+    }
+}
+
         stage('Deploy') {
             steps {
                 sh 'echo "Despliegue simulado"'
